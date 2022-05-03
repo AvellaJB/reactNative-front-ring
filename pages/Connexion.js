@@ -6,8 +6,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
-export default function Login() {
+export default function Connexion({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -27,16 +29,10 @@ export default function Login() {
           <Text style={styles.connect}>CONNECTEZ VOUS</Text>
         </View>
       </View>
-      <View style={styles.formcontainer}>
-        <TextInput placeholder="email" style={styles.inputText} />
-        <TextInput placeholder="password" style={styles.inputText} />
-        <TouchableOpacity>
-          <Text>CONNEXION</Text>
-        </TouchableOpacity>
-      </View>
+      <Login navigation={navigation} />
       <View style={styles.registerContainer}>
         <Text>On en se connaît pas encore?</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text>S'inscrire</Text>
         </TouchableOpacity>
       </View>
@@ -72,17 +68,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-
-  formcontainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  inputText: {
-    borderWidth: 2,
-    width: "90%",
   },
 
   registerContainer: {
