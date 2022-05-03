@@ -33,7 +33,7 @@ export default function Connexion({ navigation }) {
       <View style={styles.registerContainer}>
         <Text>On en se connaît pas encore?</Text>
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-          <Text>S'inscrire</Text>
+          <Text style={styles.inscrire}>S'inscrire</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -74,5 +74,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  inscrire: {
+    fontWeight: "bold",
+    textDecorationLine: "underline",
+    color: "blue",
   },
 });

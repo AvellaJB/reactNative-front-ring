@@ -3,9 +3,8 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
   Button,
-  Alert,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -19,7 +18,6 @@ export default function Login({ navigation }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      pseudo: "",
       mail: "",
       password: "",
     },
@@ -81,7 +79,9 @@ export default function Login({ navigation }) {
         name="password"
       />
 
-      <Button title="Se connecter" onPress={handleSubmit(onSubmit)} />
+      <TouchableOpacity onPress={handleSubmit(onSubmit)} style={styles.button}>
+        <Text>Se connecter</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -96,6 +96,17 @@ const styles = StyleSheet.create({
   inputText: {
     borderWidth: 2,
     width: "90%",
-    padding: 5,
+    padding: 10,
+    borderRadius: 20,
+    margin: 5,
+  },
+
+  button: {
+    backgroundColor: "#fff",
+    color: "black",
+    borderWidth: 2,
+    padding: 10,
+    margin: 10,
+    borderRadius: 20,
   },
 });
