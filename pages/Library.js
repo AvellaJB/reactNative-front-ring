@@ -29,6 +29,11 @@ export default function Library() {
     setBooks(apiResult);
   };
 
+  const deleteBookAndRefresh = async (id) => {
+    MONGOApi.deleteBookById(id);
+    onRefresh();
+  };
+
   useEffect(() => {
     fetchAndSetBooks();
   }, []);
@@ -45,7 +50,11 @@ export default function Library() {
         }
       >
         {books.map((book) => (
-          <SmartBook key={book._id} ISBN={book.ISBN} />
+          <SmartBook
+            key={book._id}
+            ISBN={book.ISBN}
+            onDeleteBook={() => deleteBookAndRefresh(book._id)}
+          />
         ))}
       </ScrollView>
     </View>

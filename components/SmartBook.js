@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ISBNApi from "../api/ISBNApi";
 import Book from "./Book";
 
-export default function SmartBook({ ISBN }) {
+export default function SmartBook({ ISBN, onDeleteBook }) {
   const [book, setBook] = useState([]);
 
   let data = ISBN;
@@ -20,7 +20,7 @@ export default function SmartBook({ ISBN }) {
 
   return (
     <View style={styles.container}>
-      <Book bookDetails={book} />
+      <Book bookDetails={book} onDeleteBook={onDeleteBook} />
     </View>
   );
 }

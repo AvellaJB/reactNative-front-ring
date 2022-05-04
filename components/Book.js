@@ -1,7 +1,7 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
-export default function Book({ bookDetails }) {
+export default function Book({ bookDetails, onDeleteBook }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{bookDetails.title}</Text>
@@ -13,6 +13,9 @@ export default function Book({ bookDetails }) {
           }}
         />
       </View>
+      <TouchableOpacity onPress={onDeleteBook} style={styles.button}>
+        <Text>Supprimer</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -42,5 +45,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     paddingBottom: 30,
+  },
+
+  button: {
+    backgroundColor: "#fff",
+    color: "black",
+    borderWidth: 2,
+    padding: 10,
+    margin: 10,
+    borderRadius: 20,
   },
 });

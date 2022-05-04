@@ -53,6 +53,22 @@ const MONGOApi = {
     };
     return getTokenAndGetBook();
   },
+
+  deleteBookById(id) {
+    const deleteBookById = async () => {
+      try {
+        const token = await AsyncStorage.getItem("jwt");
+        return base
+          .delete(`/${id}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => res.data);
+      } catch (e) {
+        console.log("Error deletebook MONGOApi.js");
+      }
+    };
+    deleteBookById();
+  },
 };
 
 export default MONGOApi;
