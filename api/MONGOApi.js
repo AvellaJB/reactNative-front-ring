@@ -1,9 +1,9 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const baseURL = "http://192.168.1.22:1664";
+const baseURL = "http://10.0.2.2:1664";
 
-const baseURLIRL = "http://10.0.2.2:1664";
+const baseURLIRL = "http://192.168.1.22:1664";
 
 const base = axios.create({ baseURL });
 
@@ -36,6 +36,22 @@ const MONGOApi = {
       }
     };
     getTokenAndAddBook();
+  },
+
+  getBookList() {
+    const getTokenAndGetBook = async () => {
+      try {
+        const token = await AsyncStorage.getItem("jwt");
+        return base
+          .get("/bibliotheque", {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => res.data);
+      } catch (e) {
+        console.log("Error getBook asyncStorage");
+      }
+    };
+    return getTokenAndGetBook();
   },
 };
 
