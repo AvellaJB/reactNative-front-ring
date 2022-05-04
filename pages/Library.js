@@ -8,7 +8,6 @@ import {
 import React, { useEffect, useState } from "react";
 import MONGOApi from "../api/MONGOApi";
 import SmartBook from "../components/SmartBook";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
