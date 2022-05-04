@@ -1,6 +1,7 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import MONGOApi from "../api/MONGOApi";
 
 export default function Scanner() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -14,8 +15,9 @@ export default function Scanner() {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
+    const ISBN = data;
     setScanned(true);
-    console.log(data);
+    MONGOApi.addBook({ ISBN });
   };
 
   if (hasPermission === null) {
